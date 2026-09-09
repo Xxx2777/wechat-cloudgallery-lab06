@@ -1,0 +1,63 @@
+<view class="composer-page">
+  <view class="composer-head">
+    <view class="avatar">
+      <image wx:if="{{userAvatar}}" src="{{userAvatar}}" mode="aspectFill"></image>
+      <view wx:else class="avatar-fallback">{{userNick}}</view>
+    </view>
+    <view class="head-copy">
+      <text class="head-name">{{userNick}}</text>
+      <text class="head-sub muted">发布到拾光</text>
+    </view>
+    <button
+      class="publish-top"
+      bindtap="publish"
+      disabled="{{!pendingImages.length || publishing}}"
+      loading="{{publishing}}"
+    >发布</button>
+  </view>
+
+  <button
+    wx:if="{{!pendingImages.length}}"
+    class="choose-photo"
+    bindtap="chooseImage"
+    hover-class="choose-hover"
+  >
+    <view class="choose-visual">
+      <view class="choose-plus">+</view>
+    </view>
+    <text class="choose-title">选择作品图片</text>
+    <text class="choose-sub muted">可一次选择多张</text>
+  </button>
+
+  <view wx:else class="editor-wrap">
+    <view class="selected-grid">
+      <view class="thumb-item" wx:for="{{pendingImages}}" wx:key="tempFilePath">
+        <image class="thumb-image" src="{{item.tempFilePath}}" mode="aspectFill"></image>
+        <button
+          class="thumb-remove"
+          catchtap="removeImage"
+          data-index="{{index}}"
+        >×</button>
+        <text class="thumb-size">{{item.sizeText}}</text>
+      </view>
+      <button
+        wx:if="{{pendingImages.length < 9}}"
+        class="add-more"
+        bindtap="chooseImage"
+      >
+        <text class="add-more-plus">+</text>
+        <text>继续添加</text>
+      </button>
+    </view>
+
+    <textarea
+      class="caption-area"
+      placeholder="写点关于这些照片的话"
+      placeholder-class="caption-placeholder"
+      value="{{caption}}"
+      maxlength="120"
+      auto-height
+      bindinput="onCaptionInput"
+    ></textarea>
+  </view>
+</view>

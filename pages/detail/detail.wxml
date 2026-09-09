@@ -1,0 +1,92 @@
+<view class="detail-page">
+  <view wx:if="{{loading}}" class="detail-skeleton">
+    <view class="skeleton skeleton-photo"></view>
+    <view class="skeleton skeleton-text"></view>
+  </view>
+
+  <block wx:elif="{{photo}}">
+    <image class="detail-photo" src="{{photo.photoUrl}}" mode="widthFix"></image>
+
+    <view class="detail-meta">
+      <view class="meta-head">
+        <view class="avatar">
+          <image wx:if="{{photo.avatarUrl}}" src="{{photo.avatarUrl}}" mode="aspectFill"></image>
+          <view wx:else class="avatar-fallback">{{photo.nickName}}</view>
+        </view>
+        <view class="meta-user">
+          <text class="meta-name">{{photo.nickName}}</text>
+          <text class="meta-loc muted">{{photo.province}} · {{photo.country}}</text>
+        </view>
+        <button
+          class="heart-btn {{liked ? 'liked' : ''}}"
+          bindtap="likePhoto"
+        >
+          <text class="heart-icon">{{liked ? '♥' : '♡'}}</text>
+          <text>{{photo.likeCount}}</text>
+        </button>
+      </view>
+
+      <view class="detail-caption">
+        <text class="caption-user">{{photo.nickName}}</text>
+        <text class="caption-text">{{photo.caption}}</text>
+      </view>
+
+      <text class="detail-date muted">{{photo.publishText}}</text>
+    </view>
+
+    <view class="comments-block">
+      <view class="comments-head">
+        <text class="comments-title">评论</text>
+        <text class="comments-count muted">{{comments.length}}</text>
+      </view>
+
+      <view wx:if="{{comments.length > 0}}" class="comment-list">
+        <view class="comment-item" wx:for="{{comments}}" wx:key="_id">
+          <view class="comment-avatar">
+            <image wx:if="{{item.avatarUrl}}" src="{{item.avatarUrl}}" mode="aspectFill"></image>
+            <view wx:else class="comment-avatar-text">{{item.nickName}}</view>
+          </view>
+          <view class="comment-copy">
+            <text class="comment-name">{{item.nickName}}</text>
+            <text class="comment-content">{{item.content}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view wx:else class="no-comment muted">还没有评论，说点什么吧</view>
+
+      <view class="comment-editor">
+        <input
+          class="comment-input"
+          placeholder="写一条友善的评论"
+          placeholder-class="comment-placeholder"
+          value="{{commentText}}"
+          confirm-type="send"
+          bindinput="onCommentInput"
+          bindconfirm="submitComment"
+        />
+        <button class="comment-send" bindtap="submitComment">发送</button>
+      </view>
+    </view>
+
+    <view class="action-dock">
+      <button class="dock-item" open-type="share">
+        <text class="dock-icon">↗</text>
+        <text>分享</text>
+      </button>
+      <button class="dock-item" bindtap="downloadPhoto">
+        <text class="dock-icon">↓</text>
+        <text>保存</text>
+      </button>
+      <button class="dock-item" bindtap="previewPhoto">
+        <text class="dock-icon">⛶</text>
+        <text>全屏</text>
+      </button>
+    </view>
+  </block>
+
+  <view wx:else class="empty-card">
+    <text class="empty-title">图片不存在</text>
+    <text class="empty-desc">这张作品可能已经被移除</text>
+  </view>
+</view>

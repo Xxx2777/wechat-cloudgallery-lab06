@@ -1,0 +1,75 @@
+<view class="home-page">
+  <view class="topbar">
+    <view class="top-actions">
+      <button class="publish-button" bindtap="goToAdd" hover-class="publish-button-hover">
+        <text class="publish-plus">+</text>
+        <text>发布</text>
+      </button>
+    </view>
+  </view>
+
+  <block wx:if="{{loading && !photoList.length}}">
+    <view class="post-skeleton" wx:for="{{skeletons}}" wx:key="*this">
+      <view class="skeleton-row">
+        <view class="skeleton skeleton-avatar"></view>
+        <view class="skeleton skeleton-name"></view>
+      </view>
+      <view class="skeleton skeleton-photo"></view>
+      <view class="skeleton skeleton-caption"></view>
+    </view>
+  </block>
+
+  <view wx:if="{{!loading && photoList.length === 0}}" class="empty-card">
+    <text class="empty-title">还没有作品</text>
+    <text class="empty-desc">发布第一张图片，让社区亮起来</text>
+  </view>
+
+  <block wx:if="{{photoList.length > 0}}">
+    <view class="post-card" wx:for="{{photoList}}" wx:key="_id">
+      <view class="post-head">
+        <navigator class="post-user" url="../homepage/homepage?id={{item._openid}}">
+          <view class="avatar">
+            <image wx:if="{{item.avatarUrl}}" src="{{item.avatarUrl}}" mode="aspectFill"></image>
+            <view wx:else class="avatar-fallback">{{item.nickName}}</view>
+          </view>
+          <view class="user-copy">
+            <text class="user-name">{{item.nickName}}</text>
+            <text class="user-loc">{{item.province}} · {{item.country}}</text>
+          </view>
+        </navigator>
+      </view>
+
+      <image
+        class="post-photo"
+        src="{{item.photoUrl}}"
+        mode="widthFix"
+        lazy-load
+        bindtap="goToDetail"
+        data-id="{{item._id}}"
+      ></image>
+
+      <view class="post-body">
+        <view class="post-toolbar">
+          <button
+            class="like-button {{item.liked ? 'liked' : ''}}"
+            bindtap="likePhoto"
+            data-index="{{index}}"
+          >
+            <text class="like-icon">{{item.liked ? '♥' : '♡'}}</text>
+            <text class="like-count">{{item.likeCount}}</text>
+          </button>
+          <button class="detail-button" bindtap="goToDetail" data-id="{{item._id}}">
+            <text>详情</text>
+          </button>
+          <text class="post-date muted">{{item.publishText}}</text>
+        </view>
+
+        <view class="post-caption" bindtap="goToDetail" data-id="{{item._id}}">
+          <text class="caption-user">{{item.nickName}}</text>
+          <text class="caption-text">{{item.caption || '分享了一张好看的图片'}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+</view>

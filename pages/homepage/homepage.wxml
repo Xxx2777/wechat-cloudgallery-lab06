@@ -1,0 +1,50 @@
+<view class="profile-page">
+  <view wx:if="{{loading}}" class="profile-skeleton">
+    <view class="skeleton skeleton-avatar"></view>
+    <view class="skeleton skeleton-line"></view>
+  </view>
+
+  <block wx:elif="{{photoList.length > 0}}">
+    <view class="profile-head">
+      <view class="profile-avatar">
+        <image wx:if="{{avatarUrl}}" src="{{avatarUrl}}" mode="aspectFill"></image>
+        <view wx:else class="profile-avatar-fallback">{{nickName}}</view>
+      </view>
+      <view class="stats">
+        <view class="stat-item">
+          <text class="stat-number">{{photoCount}}</text>
+          <text class="stat-label">作品</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-number">{{totalLikes}}</text>
+          <text class="stat-label">获赞</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="profile-bio">
+      <text class="profile-name">{{nickName}}</text>
+      <text class="profile-location muted">{{location}}</text>
+    </view>
+
+    <view class="gallery-tabs">
+      <text class="gallery-tab active">作品</text>
+    </view>
+
+    <view class="media-grid">
+      <navigator
+        class="media-item"
+        wx:for="{{photoList}}"
+        wx:key="_id"
+        url="../detail/detail?id={{item._id}}"
+      >
+        <image class="media-image" src="{{item.photoUrl}}" mode="aspectFill" lazy-load></image>
+      </navigator>
+    </view>
+  </block>
+
+  <view wx:else class="empty-card">
+    <text class="empty-title">这个主页还没有作品</text>
+    <text class="empty-desc">等 TA 发布第一张照片</text>
+  </view>
+</view>

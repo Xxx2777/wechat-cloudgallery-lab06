@@ -1,0 +1,250 @@
+.composer-page {
+  min-height: 100vh;
+  background: #ffffff;
+  padding: 0 0 240rpx;
+}
+
+.composer-head {
+  height: 118rpx;
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 2rpx solid #f1f1f1;
+}
+
+.head-copy {
+  flex: 1;
+  min-width: 0;
+  margin-left: 18rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.head-name {
+  font-size: 30rpx;
+  font-weight: 800;
+  color: #17171a;
+}
+
+.head-sub {
+  margin-top: 4rpx;
+  font-size: 21rpx;
+}
+
+.publish-top {
+  height: 60rpx;
+  padding: 0 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111113;
+  color: #ffffff;
+  font-size: 25rpx;
+  font-weight: 700;
+  border-radius: 999rpx;
+}
+
+.publish-top[disabled] {
+  background: #d9d9dc;
+  color: #ffffff;
+}
+
+.choose-photo {
+  width: calc(100% - 60rpx);
+  min-height: 430rpx;
+  margin: 36rpx 30rpx 0;
+  border: 3rpx dashed #d7d7db;
+  border-radius: 28rpx;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.choose-hover {
+  background: #f4f4f4;
+}
+
+.choose-visual {
+  width: 126rpx;
+  height: 126rpx;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2rpx solid #e1e1e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 26rpx;
+}
+
+.choose-plus {
+  font-size: 66rpx;
+  color: #343438;
+  line-height: 1;
+}
+
+.choose-title {
+  font-size: 34rpx;
+  font-weight: 800;
+  color: #1a1a1d;
+}
+
+.choose-sub {
+  margin-top: 10rpx;
+  font-size: 23rpx;
+}
+
+.editor-wrap {
+  padding: 30rpx;
+}
+
+.photo-preview {
+  border-radius: 26rpx;
+  overflow: hidden;
+  background: #f2f2f2;
+  position: relative;
+}
+
+.preview-image {
+  display: block;
+  width: 100%;
+}
+
+.photo-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16rpx;
+}
+
+.tool-btn {
+  flex: 1;
+  height: 72rpx;
+  margin: 0 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f1f1;
+  color: #3a3a3e;
+  border-radius: 18rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.tool-btn.danger {
+  background: #fdecea;
+  color: #c53b35;
+}
+
+.caption-area {
+  width: 100%;
+  min-height: 180rpx;
+  margin-top: 26rpx;
+  padding: 26rpx;
+  background: #fafafa;
+  border-radius: 24rpx;
+  font-size: 29rpx;
+  line-height: 1.6;
+  color: #1d1d20;
+}
+
+.caption-placeholder {
+  color: #b4b4b8;
+}
+
+.publish-bar {
+  margin-top: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.counter {
+  font-size: 23rpx;
+}
+
+.publish-button {
+  width: 250rpx;
+  height: 84rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111113;
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: 800;
+  border-radius: 999rpx;
+}
+
+.publish-button[disabled] {
+  background: #c8c8cc;
+  color: #f6f6f6;
+}
+
+.selected-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.thumb-item,
+.add-more {
+  width: 218rpx;
+  height: 218rpx;
+  margin-bottom: 12rpx;
+  border-radius: 18rpx;
+  overflow: hidden;
+  background: #f2f2f2;
+  position: relative;
+}
+
+.thumb-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.thumb-remove {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.62);
+  color: #ffffff;
+  border-radius: 0 0 0 18rpx;
+  font-size: 36rpx;
+  line-height: 1;
+}
+
+.thumb-size {
+  position: absolute;
+  left: 10rpx;
+  bottom: 10rpx;
+  padding: 4rpx 12rpx;
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  border-radius: 999rpx;
+  font-size: 18rpx;
+}
+
+.add-more {
+  border: 3rpx dashed #d8d8dc;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #4a4a4f;
+  font-size: 23rpx;
+}
+
+.add-more-plus {
+  font-size: 48rpx;
+  line-height: 1;
+  margin-bottom: 10rpx;
+}

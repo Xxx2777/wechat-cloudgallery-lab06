@@ -1,0 +1,160 @@
+.profile-page {
+  min-height: 100vh;
+  background: #ffffff;
+  padding-bottom: 60rpx;
+}
+
+.profile-head {
+  padding: 44rpx 40rpx 10rpx;
+  display: flex;
+  align-items: center;
+}
+
+.profile-avatar {
+  width: 158rpx;
+  height: 158rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #f2f2f2;
+  flex: none;
+}
+
+.profile-avatar image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.profile-avatar-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0b8ae;
+  color: #ffffff;
+  font-size: 50rpx;
+  font-weight: 800;
+}
+
+.stats {
+  flex: 1;
+  margin-left: 42rpx;
+  display: flex;
+  justify-content: space-around;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-size: 40rpx;
+  font-weight: 800;
+  color: #1b1b1d;
+}
+
+.stat-label {
+  margin-top: 6rpx;
+  font-size: 23rpx;
+  color: #8b8b90;
+}
+
+.profile-bio {
+  padding: 22rpx 42rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-name {
+  font-size: 32rpx;
+  font-weight: 800;
+  color: #18181a;
+}
+
+.profile-location {
+  margin-top: 8rpx;
+  font-size: 23rpx;
+}
+
+.gallery-tabs {
+  height: 76rpx;
+  margin-top: 18rpx;
+  border-top: 2rpx solid #f0f0f0;
+  border-bottom: 2rpx solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.gallery-tab {
+  position: relative;
+  font-size: 25rpx;
+  color: #8a8a8e;
+}
+
+.gallery-tab.active {
+  color: #161618;
+  font-weight: 700;
+}
+
+.gallery-tab.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4rpx;
+  width: 46rpx;
+  height: 5rpx;
+  border-radius: 6rpx;
+  background: #e3504a;
+  transform: translateX(-50%);
+}
+
+.gallery-tab.disabled {
+  opacity: 0.45;
+}
+
+.media-grid {
+  padding: 6rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.media-item {
+  width: 246rpx;
+  height: 246rpx;
+  margin-bottom: 5rpx;
+  background: #f1f1f1;
+}
+
+.media-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.profile-skeleton {
+  padding: 50rpx 40rpx;
+  display: flex;
+  align-items: center;
+}
+
+.skeleton {
+  background: #ececec;
+  border-radius: 14rpx;
+}
+
+.skeleton-avatar {
+  width: 158rpx;
+  height: 158rpx;
+  border-radius: 50%;
+}
+
+.skeleton-line {
+  flex: 1;
+  height: 36rpx;
+  margin-left: 36rpx;
+}

@@ -1,0 +1,70 @@
+<view class="mine-page">
+  <view class="mine-hero">
+    <view class="avatar-circle">
+      <image wx:if="{{editAvatar}}" class="avatar-circle-img" src="{{editAvatar}}" mode="aspectFill"></image>
+      <view wx:else class="avatar-circle-empty">+</view>
+      <button class="avatar-picker" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar"></button>
+    </view>
+    <view class="hero-fields">
+      <input
+        class="nick-input"
+        type="nickname"
+        placeholder="微信昵称"
+        placeholder-class="nick-placeholder"
+        value="{{editNick}}"
+        bindinput="onNickInput"
+        bindblur="saveNickname"
+      />
+      <text class="hero-tip">头像和昵称会展示在你的作品上</text>
+    </view>
+  </view>
+
+  <view class="profile-actions">
+    <button class="profile-action" bindtap="goPublicProfile">公开主页</button>
+    <button class="profile-action" bindtap="toggleManage">
+      {{manageMode ? '完成' : '管理'}}
+    </button>
+  </view>
+
+  <view class="mine-stats">
+    <view class="stat-cell">
+      <text class="stat-value">{{photoCount}}</text>
+      <text class="stat-label">作品</text>
+    </view>
+    <view class="stat-cell">
+      <text class="stat-value">{{totalLikes}}</text>
+      <text class="stat-label">获赞</text>
+    </view>
+  </view>
+
+  <view class="works-head">
+    <view>
+      <text class="works-title">我的作品</text>
+      <text class="works-note muted">点击图片可预览</text>
+    </view>
+  </view>
+
+  <view wx:if="{{!loading && photoList.length === 0}}" class="empty-card">
+    <text class="empty-title">还没有发布作品</text>
+    <text class="empty-desc">点下方“发布”开始分享第一张照片</text>
+  </view>
+
+  <view wx:if="{{photoList.length > 0}}" class="mine-grid">
+    <view
+      class="grid-item"
+      wx:for="{{photoList}}"
+      wx:key="_id"
+      bindtap="previewPhoto"
+      data-url="{{item.photoUrl}}"
+    >
+      <image class="grid-image" src="{{item.photoUrl}}" mode="aspectFill" lazy-load></image>
+      <button
+        wx:if="{{manageMode}}"
+        class="delete-btn"
+        catchtap="deleteHistoryPhoto"
+        data-id="{{item._id}}"
+        data-url="{{item.photoUrl}}"
+      >×</button>
+    </view>
+  </view>
+</view>
